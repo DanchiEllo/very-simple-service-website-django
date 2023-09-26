@@ -1,0 +1,11 @@
+{% block content %}
+
+    {% for f in form %}
+        <form class="" action="{% url 'service_create_url' %}" method="post">
+        {% csrf_token %}
+        <div><a>{{ f }}</a></div>
+        <button type="submit" name="button">create</button>
+        </form>
+    {% endfor %}
+
+{% endblock %}

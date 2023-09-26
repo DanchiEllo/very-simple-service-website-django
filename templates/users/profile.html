@@ -1,0 +1,28 @@
+{% extends "pages/base.html" %}
+{% block content %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'my_profile.css' %}">
+    <div class="ProfileForm">
+    <form class="form">
+    {% if user_prof.is_anonymous %}
+        <h1>Не авторизованный пользователь</h1>
+    {% else %}
+        {% if user_prof.profile_picture %}
+                <div>
+                    <img class="circle" alt="" src="{{ user_prof.profile_picture.url }}">
+                </div>
+        {% else %}
+            <img class="circle" alt="" src="{% static 'blank-profile.jpg' %}">
+        {% endif %}
+        <p>@{{ user_prof.username }}</p>
+        <div class="label">
+            <h1>Имя: {{ user_prof.first_name }}</h1>
+            <h1>Фамилия: {{ user_prof.last_name }}</h1>
+            <h1>Почта: {{ user_prof.email }}</h1>
+            <h1>Пол: {{ user_prof.gender }}</h1>
+            <h1>Роль: {{ user_prof.groups.get }}</h1>
+        </div>
+    {% endif %}
+    </form>
+    </div>
+{% endblock %}

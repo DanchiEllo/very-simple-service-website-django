@@ -1,0 +1,169 @@
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'base.css' %}">
+<div class="topnav" id="myTopnav">
+{#  <a href="#home" class="active">Главная</a>#}
+{#  <a href="#contact">Контакты</a>#}
+  <div class="dropdown">
+    <button class="dropbtn">Услуги
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#">Строительство</a>
+      <a href="#">Видеосъёмка</a>
+      <a href="#">Видеомонтаж</a>
+    </div>
+  </div>
+{#  <a href="#about">О нас</a>#}
+    {% if user.is_authenticated %}
+        <div class="account-button"><a href="{% url 'logout' %}">выход</a></div>
+        <div class="account-button"><a href="{% url 'my_profile' %}">{{ user.username }}</a></div>
+    {% else %}
+                <div class="account-button">
+                    <a class="account-button" href="{% url 'authorization' %}">Вход</a>
+                    <a class="account-button" href="{% url 'registration' %}">Регистрация</a>
+                </div>
+    {% endif %}
+{#  <a href="{% static 'base.js' %}" class="icon" onclick="myFunction()">&#9776;</a>#}
+</div>
+    <form class="form-users">
+        {% for us in list_user %}
+            <div>
+            <a>{{ us.username }}:{{ us.online }}</a>
+            </div>
+        {% endfor %}
+{#        <div>#}
+{#            <h1>Заказчики</h1>#}
+{#        </div>#}
+{#            {% for user in customers %}#}
+{#                <div>#}
+{#                        <a href="{% url 'profile' user.id %}">{{ user.username }}</a>#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#        <div>#}
+{#            <h1>Исполнители</h1>#}
+{#        </div>#}
+{#            {% for user in executors %}#}
+{#                <div>#}
+{#                        <a href="{% url 'profile' user.id %}">{{ user.username }}</a>#}
+{#                </div>#}
+{#            {% endfor %}#}
+    </form>
+{% endblock %}
+
+{#<div class="baba">#}
+{##}
+{#  <img src="{% static 'photo2.jpeg' %}" class="photo1" alt="...">#}
+{##}
+{##}
+{#  <img src="{% static 'photo1.jpg' %}" class="photo2" alt="...">#}
+{#</div>#}
+
+
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#  <title>Главная</title>#}
+{#  <meta charset="utf-8">#}
+{#    {% load static %}#}
+{#    <link rel="stylesheet" href="{% static 'base.css' %}">#}
+{#</head>#}
+{#<body>#}
+{##}
+{##}
+{#  <ul>#}
+{#    <li><a class="active" href="/">Главная</a></li>#}
+{#    <li><button class="" href="#news">Услуги</button>#}
+{#    <div class="dropdown-content">#}
+{#      <a href="#">Ссылка 1</a>#}
+{#      <a href="#">Ссылка 2</a>#}
+{#      <a href="#">Ссылка 3</a>#}
+{#    </div></li>#}
+{#    <li><a href="#contact">Контакты</a></li>#}
+{#    {% if user.is_authenticated %}#}
+{#                <li class="account-button"><a href="{% url 'logout' %}">{{ user.username }}</a></li>#}
+{#    {% else %}#}
+{#                <li class="account-button"><a href="{% url 'authorization' %}">Войти</a></li>#}
+{#    {% endif %}#}
+{#  </ul>#}
+{##}
+{#  <div class="page">#}
+{##}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{#  <p>ОСНОВНОЙ КОНТЕНТ♥</p>#}
+{##}
+{#  </div>#}
+{##}
+{# </body>#}
+{#</html>#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="ru">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Домашняя страница</title>#}
+{#    {% load static %}#}
+{#    <link rel="stylesheet" href="{% static 'base.css' %}">#}
+{#</head>#}
+{#<body>#}
+{#<script src="{% static 'base.js' %}"></script>#}
+{#<div class="wrapper">#}
+{#        <nav>#}
+{#          <div class="logo">*Логотип*</div>#}
+{#          <ul>#}
+{#            <li><a href="#">Главная</a></li>#}
+{#            <li><a href="#">О нас</a></li>#}
+{#            <li><a href="#">Услуги</a></li>#}
+{#            <li><a href="#">Контакты</a></li>#}
+{#            {% if user.is_authenticated %}#}
+{#                <li><a href="{% url 'logout' %}">{{ user.username }}</a></li>#}
+{#            {% else %}#}
+{#                <li><a class="logoutlogin_button" href="{% url 'authorization' %}">Войти</a></li>#}
+{#            {% endif %}#}
+{#          </ul>#}
+{#         </nav>#}
+{#</div>#}
+{#<section class="sec1"></section>#}
+{#<section class="content"><p>asfsafasfasfasfafs</p></section>#}
+{#    {% block content %}#}
+{##}
+{#{% endblock %}#}
+{##}
+{##}
+{#</body>#}
+{#</html>#}

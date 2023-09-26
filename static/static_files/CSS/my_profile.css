@@ -1,0 +1,40 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: "lato", sans-serif;
+}
+
+.form {
+  background-color: white;
+  width: 400px;
+  border-radius: 8px;
+  padding: 20px 40px;
+  box-shadow: 0 1px 25px #0000CD;
+  align-items: center;
+  text-align: center;
+}
+
+.label {
+  font-family: Consolas sans-serif;
+  text-align: left;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  object-fit: cover;
+  box-shadow: 0 1px 25px #0000CD;
+  border-radius: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.ProfileForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
